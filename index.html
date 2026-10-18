@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111b18" />
+    <meta name="description" content="Turn an engineering goal into a clear, testable task brief." />
+    <title>Taskframe — AI Engineering Brief Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Taskframe home"><span class="brand-mark">T</span><span>taskframe<span class="brand-dot">.</span></span></a>
+      <span class="topbar-note">ENGINEERING WORKFLOW TOOL</span>
+    </header>
+    <main id="top">
+      <section class="intro">
+        <p class="eyebrow"><span class="pulse"></span> BUILD A BETTER HANDOFF</p>
+        <h1>Turn a rough idea into a <em>shippable brief.</em></h1>
+        <p class="intro-copy">Give a coding agent or teammate the goal, constraints, and proof of done before implementation starts.</p>
+      </section>
+      <section class="workspace" aria-label="Brief builder">
+        <form id="brief-form" class="form-panel">
+          <div class="panel-heading"><div><p class="eyebrow">01 / DEFINE THE WORK</p><h2>Project context</h2></div><span id="completion" class="completion">0% READY</span></div>
+          <label for="project">Project or repository <span>required</span></label>
+          <input id="project" name="project" maxlength="120" placeholder="e.g. payments-api" autocomplete="off" required />
+          <label for="goal">What needs to change? <span>required</span></label>
+          <textarea id="goal" name="goal" rows="3" maxlength="800" placeholder="Describe the user problem and desired outcome." required></textarea>
+          <div class="split-fields">
+            <div><label for="criteria">Acceptance criteria <span>required</span></label><textarea id="criteria" name="criteria" rows="5" placeholder="One observable outcome per line." required></textarea></div>
+            <div><label for="verification">How will it be verified? <span>required</span></label><textarea id="verification" name="verification" rows="5" placeholder="Tests, commands, measurements, or review steps." required></textarea></div>
+          </div>
+          <label for="constraints">Constraints and context <span class="optional">optional</span></label>
+          <textarea id="constraints" name="constraints" rows="3" placeholder="Relevant files, compatibility needs, design limits, or things to avoid."></textarea>
+          <div class="form-footer"><span id="form-hint">Complete the four required fields to build your brief.</span><button type="submit" id="build-button">Build brief <span aria-hidden="true">↗</span></button></div>
+        </form>
+        <section class="preview-panel" aria-labelledby="preview-title">
+          <div class="preview-header"><div><p class="eyebrow">02 / REVIEW THE HANDOFF</p><h2 id="preview-title">Your task brief</h2></div><span class="live-indicator"><span></span> LOCAL PREVIEW</span></div>
+          <div id="preview-empty" class="empty-state"><div class="empty-icon">↳</div><h3>Your brief will appear here</h3><p>Fill in the project, goal, acceptance criteria, and verification plan.</p></div>
+          <pre id="preview" class="preview" aria-live="polite" hidden></pre>
+          <div class="preview-actions"><button id="copy-button" class="secondary" type="button" disabled>Copy markdown</button><button id="download-button" class="secondary" type="button" disabled>Download .md</button></div>
+          <p class="privacy-note"><span>◈</span> Everything runs in this browser. Your brief is not sent to a server.</p>
+        </section>
+      </section>
+      <section class="principles" aria-label="Brief writing principles"><p class="eyebrow">A GOOD HANDOFF MAKES THE NEXT STEP OBVIOUS</p><div><article><span>01</span><h3>State the outcome</h3><p>Describe the user-facing change, not just a list of files to edit.</p></article><article><span>02</span><h3>Make done observable</h3><p>Use criteria someone can verify without guessing what you meant.</p></article><article><span>03</span><h3>Measure honestly</h3><p>Report only checks and metrics that were actually run.</p></article></div></section>
+    </main>
+    <footer><a class="brand" href="#top"><span class="brand-mark">T</span><span>taskframe<span class="brand-dot">.</span></span></a><span>Clear briefs. Verifiable work.</span></footer>
+  </body>
+</html>
